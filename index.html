@@ -2,173 +2,103 @@
 <html lang="th">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</title>
   <style>
-    :root {
-      --bg1: #fff5f8;
-      --bg2: #ffe9f2;
+    :root{
+      --bg1: #fff0f6;
+      --bg2: #ffe6f2;
       --accent: #ff3b7a;
-      --rosegold: #d28a7a;
       --text: #7a0b3a;
     }
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Helvetica, Arial;
-      background: linear-gradient(180deg, var(--bg1), var(--bg2));
-      display: flex; align-items: center; justify-content: center; flex-direction: column;
-      overflow: hidden;
-      padding: 20px;
+    html,body{height:100%;margin:0;font-family:"Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial;}
+    body{
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+      overflow:hidden;padding:20px;color:var(--text);text-align:center;
     }
-    .card {
-      width: 100%; max-width: 900px;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 20px;
-      padding: 36px;
-      box-shadow: 0 12px 40px rgba(160,60,120,0.12);
-      text-align: center;
-      position: relative;
+    h1{margin:0 0 10px;font-size:22px;font-weight:700}
+    p.sub{margin:8px 0 20px;color:#9b3a66}
+    #startButton{
+      appearance:none;border:0;cursor:pointer;padding:14px 24px;border-radius:16px;
+      background:linear-gradient(90deg,var(--accent),#ff6aa8);
+      color:#fff;font-size:18px;font-weight:700;box-shadow:0 8px 26px rgba(255,90,150,0.18);
     }
-    h1 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      color: var(--text);
-      font-weight: 700;
-    }
-    .subtitle {
-      margin: 0 0 22px;
-      color: #9b3a66;
-      font-weight: 500;
-    }
-    .open-btn {
-      appearance: none;
-      border: none;
-      cursor: pointer;
-      padding: 16px 28px;
-      border-radius: 18px;
-      background: linear-gradient(90deg, var(--accent), #ff6aa8);
-      color: white;
-      font-size: 20px;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(255,90,150,0.18);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .open-btn:hover {
-      transform: scale(1.04);
-    }
-    .reveal {
-      margin-top: 30px;
-      display: none;
-      align-items: center;
-      flex-direction: column;
-    }
-    .bouquet {
-      width: 350px; max-width: 70%;
-      border-radius: 16px;
-      box-shadow: 0 14px 46px rgba(200,80,130,0.18);
-      animation: bouquetPop .7s cubic-bezier(.2,.9,.3,1) forwards;
-    }
-    @keyframes bouquetPop {
-      from { opacity: 0; transform: scale(.6) translateY(20px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .message {
-      display: none;
-      margin-top: 24px;
-      font-size: 22px;
-      color: var(--text);
-      font-weight: 700;
-      animation: textFade .9s ease forwards .15s;
-    }
-    @keyframes textFade {
-      from { opacity: 0; transform: translateY(12px) scale(.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .petal {
-      position: fixed;
-      top: -10px;
-      width: 16px; height: 20px;
-      border-radius: 50%;
-      background: pink;
-      opacity: 0.8;
-      pointer-events: none;
-      animation: fall linear forwards;
-    }
-    @keyframes fall {
-      to {
-        transform: translate3d(var(--x,0px), 100vh, 0) rotate(360deg);
-        opacity: 0;
-      }
-    }
+    #startButton:active{transform:translateY(2px)}
+    .flower{display:block;margin-top:22px;border-radius:16px;box-shadow:0 12px 40px rgba(200,80,130,0.14);width:320px;max-width:70%}
+    .message{display:none;margin-top:18px;font-size:20px;font-weight:700;color:var(--text)}
+    .petal{position:fixed;top:-10px;pointer-events:none;width:16px;height:20px;border-radius:50%;
+      background: radial-gradient(circle,#ffd6e6 40%,#ffbcd1 100%);opacity:0.9;filter:drop-shadow(0 4px 6px rgba(150,50,100,0.12));
+      animation: fall linear forwards;}
+    @keyframes fall{to{transform:translate3d(var(--tx,0px),110vh,0) rotate(var(--rot,360deg));opacity:0}}
+    @media (max-width:520px){.flower{width:86%}.message{font-size:18px}}
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</h1>
-    <p class="subtitle">กดปุ่มนี้สิ แล้วฟังเพลงจากใจของเค้า 🌸</p>
-    <button class="open-btn" id="openBtn">💝 กดตรงนี้สิ เจ้าหญิงของเค้า 💝</button>
+  <h1>เค้าจะอยู่ข้างพี่มะนาวตลอดไปนะ เจ้าหญิงของเค้า 💖</h1>
+  <p class="sub">กดแล้วฟังเพลงจากใจของเค้า แล้วรับช่อดอกไม้จากเค้า 🌸</p>
 
-    <div class="reveal" id="reveal">
-      <img class="bouquet" src="https://i.imgur.com/Y6XfHBg.jpeg" alt="ช่อดอกไม้">
-      <div class="message" id="msg">
-        ขอโทษนะครับที่ทำให้พี่มะนาวเสียใจ<br>
-        เค้ารักพี่มะนาวไม่แพ้ใครเลยนะ 💖
-      </div>
-    </div>
+  <!-- Thai button -->
+  <button id="startButton">กดตรงนี้สิ เจ้าหญิงของเค้า 💝</button>
+
+  <!-- flower + message area -->
+  <img id="bouquet" class="flower" src="https://i.imgur.com/Y6XfHBg.jpeg" alt="ช่อดอกไม้สีชมพู" style="display:none">
+  <div id="msg" class="message">
+    ขอโทษนะครับที่ทำให้พี่มะนาวเสียใจ<br>
+    เค้ารักพี่มะนาวไม่แพ้ใครเลยนะ 💖
   </div>
 
+  <!-- hidden audio (hosted on catbox) -->
   <audio id="bgAudio" src="https://files.catbox.moe/xstwaf.mp3" preload="auto"></audio>
 
   <script>
-    const btn = document.getElementById('openBtn');
-    const reveal = document.getElementById('reveal');
-    const msg = document.getElementById('msg');
+    const startButton = document.getElementById('startButton');
     const audio = document.getElementById('bgAudio');
+    const bouquet = document.getElementById('bouquet');
+    const msg = document.getElementById('msg');
+    let petalsInterval;
 
-    btn.addEventListener('click', () => {
-      btn.style.display = 'none';
-      reveal.style.display = 'flex';
-      setTimeout(() => msg.style.display = 'block', 800);
-      audio.currentTime = 63; // start at 1:03
-audio.play().catch(() => console.log("Autoplay blocked"));
+    function createPetal(){
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random()*100 + 'vw';
+      const tx = (Math.random()*140 - 70) + 'vw';
+      const rot = Math.floor(Math.random()*720) + 'deg';
+      const dur = (6 + Math.random()*6).toFixed(2) + 's';
+      p.style.animationDuration = dur;
+      p.style.setProperty('--tx', tx);
+      p.style.setProperty('--rot', rot);
+      document.body.appendChild(p);
+      setTimeout(()=> p.remove(), (parseFloat(dur)+0.5)*1000);
+    }
 
-      for (let i = 0; i < 15; i++) {
-        createPetal();
-      }
+    startButton.addEventListener('click', () => {
+      // hide button
+      startButton.style.transition = 'opacity .25s';
+      startButton.style.opacity = 0;
+      setTimeout(()=> startButton.style.display = 'none', 300);
+
+      // reveal bouquet + message
+      bouquet.style.display = 'block';
+      setTimeout(()=> msg.style.display = 'block', 700);
+
+      // start audio at 1:03
+      try {
+        audio.currentTime = 63; // seek to 1:03
+      } catch(e){ /* some browsers may restrict setting currentTime before load */ }
+      audio.play().catch(err => console.warn('play blocked', err));
+
+      // start petals: 5 petals per second, stop after 25s
+      petalsInterval = setInterval(()=>{
+        for(let i=0;i<5;i++) createPetal();
+      }, 1000);
+      setTimeout(()=> clearInterval(petalsInterval), 25000);
     });
 
-  // gentle, continuous petals 🌸
-let petalsInterval;
-
-btn.addEventListener('click', () => {
-  btn.style.display = 'none';
-  reveal.style.display = 'flex';
-  setTimeout(() => msg.style.display = 'block', 800);
-  audio.currentTime = 63; // start music at 1:03
-  audio.play().catch(() => console.log("Autoplay blocked"));
-
-  // start dropping petals slowly
-  petalsInterval = setInterval(() => {
-    for (let i = 0; i < 5; i++) createPetal(); // 5 petals per second
-  }, 1000);
-
-  // stop generating new petals after 25 seconds
-  setTimeout(() => clearInterval(petalsInterval), 25000);
-});
-
-function createPetal() {
-  const p = document.createElement('div');
-  p.className = 'petal';
-  p.style.left = Math.random() * 100 + 'vw';
-  p.style.background = `rgba(255, ${150 + Math.random()*50}, ${180 + Math.random()*60}, 0.9)`;
-  p.style.animationDuration = (7 + Math.random() * 5) + 's';
-  p.style.setProperty('--x', (Math.random() * 40 - 20) + 'vw');
-  document.body.appendChild(p);
-  setTimeout(() => p.remove(), 12000);
-}
-
+    // accessibility: allow Enter/Space to trigger
+    startButton.addEventListener('keydown',(e)=> {
+      if(e.key==='Enter' || e.key===' ') { e.preventDefault(); startButton.click(); }
+    });
   </script>
 </body>
 </html>
