@@ -69,18 +69,12 @@
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(255, 182, 193, 0.7);
       margin-top: 20px;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); filter: brightness(1); }
-      50% { transform: scale(1.05); filter: brightness(1.15); }
     }
   </style>
 </head>
 <body>
   <h1>อยู่ข้างเจ้าหญิงมะนาวเสมอ 💖</h1>
-  <button onclick="playLove()">กดเพื่อฟังเสียงหัวใจของเค้า 💞</button>
+  <button onclick="playLove()">กดเพื่อเริ่มฟังความรัก 💞</button>
   <img src="https://i.imgur.com/Y6XfHBg.jpeg" alt="Pink Roses">
 
   <audio id="loveAudio" preload="auto">
@@ -93,17 +87,17 @@
       audio.currentTime = 63; // Start from 1:03
       audio.play();
 
-      // Soft continuous petal drops
+      // Petal generation — balanced rate
       setInterval(() => {
         const petal = document.createElement('div');
         petal.classList.add('petal');
         petal.style.width = Math.random() * 10 + 10 + 'px';
         petal.style.height = petal.style.width;
         petal.style.left = Math.random() * window.innerWidth + 'px';
-        petal.style.animationDuration = Math.random() * 6 + 6 + 's';
+        petal.style.animationDuration = Math.random() * 6 + 5 + 's';
         document.body.appendChild(petal);
-        setTimeout(() => petal.remove(), 12000);
-      }, 400); // 1 petal every 0.4s (soft continuous fall)
+        setTimeout(() => petal.remove(), 11000);
+      }, 350); // 1 petal every 0.35s — soft continuous drop
     }
   </script>
 </body>
