@@ -86,36 +86,15 @@
       from { opacity: 0; transform: translateY(12px) scale(.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
-    // gentle, continuous petals 🌸
-let petalsInterval;
-
-btn.addEventListener('click', () => {
-  btn.style.display = 'none';
-  reveal.style.display = 'flex';
-  setTimeout(() => msg.style.display = 'block', 800);
-  audio.currentTime = 63; // start music at 1:03
-  audio.play().catch(() => console.log("Autoplay blocked"));
-
-  // start dropping petals slowly
-  petalsInterval = setInterval(() => {
-    for (let i = 0; i < 2; i++) createPetal(); // 2 petals per second
-  }, 1000);
-
-  // stop generating new petals after 25 seconds
-  setTimeout(() => clearInterval(petalsInterval), 25000);
-});
-
-function createPetal() {
-  const p = document.createElement('div');
-  p.className = 'petal';
-  p.style.left = Math.random() * 100 + 'vw';
-  p.style.background = `rgba(255, ${150 + Math.random()*50}, ${180 + Math.random()*60}, 0.9)`;
-  p.style.animationDuration = (7 + Math.random() * 5) + 's';
-  p.style.setProperty('--x', (Math.random() * 40 - 20) + 'vw');
-  document.body.appendChild(p);
-  setTimeout(() => p.remove(), 12000);
-}
-
+    .petal {
+      position: fixed;
+      top: -10px;
+      width: 16px; height: 20px;
+      border-radius: 50%;
+      background: pink;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: fall linear forwards;
     }
     @keyframes fall {
       to {
@@ -160,16 +139,36 @@ audio.play().catch(() => console.log("Autoplay blocked"));
       }
     });
 
-    function createPetal() {
-      const p = document.createElement('div');
-      p.className = 'petal';
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.background = `rgba(255, ${150 + Math.random()*50}, ${180 + Math.random()*60}, 0.9)`;
-      p.style.animationDuration = (6 + Math.random() * 5) + 's';
-      p.style.setProperty('--x', (Math.random() * 40 - 20) + 'vw');
-      document.body.appendChild(p);
-      setTimeout(() => p.remove(), 11000);
-    }
+  // gentle, continuous petals 🌸
+let petalsInterval;
+
+btn.addEventListener('click', () => {
+  btn.style.display = 'none';
+  reveal.style.display = 'flex';
+  setTimeout(() => msg.style.display = 'block', 800);
+  audio.currentTime = 63; // start music at 1:03
+  audio.play().catch(() => console.log("Autoplay blocked"));
+
+  // start dropping petals slowly
+  petalsInterval = setInterval(() => {
+    for (let i = 0; i < 2; i++) createPetal(); // 2 petals per second
+  }, 1000);
+
+  // stop generating new petals after 25 seconds
+  setTimeout(() => clearInterval(petalsInterval), 25000);
+});
+
+function createPetal() {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.style.left = Math.random() * 100 + 'vw';
+  p.style.background = `rgba(255, ${150 + Math.random()*50}, ${180 + Math.random()*60}, 0.9)`;
+  p.style.animationDuration = (7 + Math.random() * 5) + 's';
+  p.style.setProperty('--x', (Math.random() * 40 - 20) + 'vw');
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 12000);
+}
+
   </script>
 </body>
 </html>
