@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>อยู่ข้างเจ้าหญิงมะนาวเสมอ 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #ffd6e8, #ffb6c1);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Segoe UI", cursive, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: #fff5f8;
+      text-shadow: 0 0 10px rgba(255, 100, 150, 0.8);
+      margin-bottom: 20px;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff8fa3, 0 0 20px #ff5f7e; }
+      to { text-shadow: 0 0 20px #ffc0cb, 0 0 40px #ff5f7e; }
+    }
+
+    button {
+      background: linear-gradient(45deg, #ff7fa3, #ffb6c1);
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      padding: 15px 35px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 150, 170, 0.4);
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #ff92a3, #ffc0cb);
+      transform: scale(1.08);
+      box-shadow: 0 4px 25px rgba(255, 200, 220, 0.6);
+    }
+
+    .petal {
+      position: absolute;
+      top: -10px;
+      background: radial-gradient(circle, #ffb6c1 40%, #ff9aa2 90%);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    img {
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 182, 193, 0.7);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>อยู่ข้างเจ้าหญิงมะนาวเสมอ 💖</h1>
+  <button onclick="playLove()">กดเพื่อเริ่มฟังความรัก 💞</button>
+  <img src="—Pngtree—pink rose bouquet with wrapping_20908382.png" alt="Pink Roses">
+
+  <audio id="loveAudio" preload="auto">
+    <source src="https://files.catbox.moe/xstwaf.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function playLove() {
+      const audio = document.getElementById('loveAudio');
+      audio.currentTime = 63; // Start from 1:03
+      audio.play();
+
+      // Petal generation
+      setInterval(() => {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.width = Math.random() * 10 + 10 + 'px';
+        petal.style.height = petal.style.width;
+        petal.style.left = Math.random() * window.innerWidth + 'px';
+        petal.style.animationDuration = Math.random() * 6 + 5 + 's';
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 11000);
+      }, 300); // 1 petal roughly every 0.3s
+    }
+  </script>
+</body>
+</html>
